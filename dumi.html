@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DUMI GAMES - Jocuri și Jucării pentru Copii</title>
+    <style>
+        /* Reset și stiluri generale */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+       
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+       
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+       
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+       
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+       
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+       
+        .logo h1 {
+            font-size: 2.2rem;
+            margin-left: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+       
+        .logo-icon {
+            font-size: 2.5rem;
+        }
+       
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+       
+        nav ul li {
+            margin-left: 20px;
+        }
+       
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+       
+        nav ul li a:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+       
+        .user-actions {
+            display: flex;
+            align-items: center;
+        }
+       
+        .user-actions a {
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+       
+        .user-actions i {
+            margin-right: 5px;
+        }
+       
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+       
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+        }
+       
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            max-width: 600px;
+        }
+       
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+       
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+       
+        .btn {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+       
+        .btn:hover {
+            background: #ff5252;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+       
+        /* Categorii */
+        .categories {
+            padding: 60px 0;
+            background-color: white;
+        }
+       
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+            font-size: 2rem;
+        }
+       
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+       
+        .category-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+       
+        .category-card:hover {
+            transform: translateY(-10px);
+        }
+       
+        .category-img {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+       
+        .category-card h3 {
+            padding: 15px;
+            color: #333;
+        }
+       
+        /* Produse */
+        .products {
+            padding: 60px 0;
+            background-color: #f9f9f9;
+        }
+       
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+       
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+       
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+       
+        .product-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+       
+        .product-info {
+            padding: 20px;
+        }
+       
+        .product-info h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+       
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin-bottom: 15px;
+        }
+       
+        .product-rating {
+            color: #ffc107;
+            margin-bottom: 15px;
+        }
+       
+        .add-to-cart {
+            width: 100%;
+            padding: 10px;
+            background: #4ecdc4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+       
+        .add-to-cart:hover {
+            background: #3db8af;
+        }
+       
+        /* Despre noi */
+        .about {
+            padding: 60px 0;
+            background-color: white;
+        }
+       
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+       
+        .about-text {
+            flex: 1;
+        }
+       
+        .about-image {
+            flex: 1;
+            height: 400px;
+            background: url('https://images.unsplash.com/photo-1587654780291-39c9404d746b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            border-radius: 10px;
+        }
+       
+        /* Newsletter */
+        .newsletter {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #4ecdc4, #ff6b6b);
+            color: white;
+            text-align: center;
+        }
+       
+        .newsletter h2 {
+            margin-bottom: 20px;
+        }
+       
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+        }
+       
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 1rem;
+        }
+       
+        .newsletter-form button {
+            padding: 0 25px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            font-weight: bold;
+        }
+       
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 50px 0 20px;
+        }
+       
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+       
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+       
+        .footer-column ul {
+            list-style: none;
+        }
+       
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+       
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+       
+        .footer-column ul li a:hover {
+            color: #4ecdc4;
+        }
+       
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+       
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+       
+        .social-icons a:hover {
+            color: #4ecdc4;
+        }
+       
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+       
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+           
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+           
+            nav ul li {
+                margin: 5px;
+            }
+           
+            .hero h2 {
+                font-size: 2rem;
+            }
+           
+            .about-content {
+                flex-direction: column;
+            }
+           
+            .newsletter-form {
+                flex-direction: column;
+            }
+           
+            .newsletter-form input {
+                border-radius: 30px;
+                margin-bottom: 10px;
+            }
+           
+            .newsletter-form button {
+                border-radius: 30px;
+                padding: 12px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">🧩</div>
+                <h1>DUMI GAMES</h1>
+            </div>
+           
+            <nav>
+                <ul>
+                    <li><a href="#home">Acasă</a></li>
+                    <li><a href="#categorii">Categorii</a></li>
+                    <li><a href="#produse">Produse</a></li>
+                    <li><a href="#despre">Despre Noi</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+           
+            <div class="user-actions">
+                <a href="#"><i class="fas fa-search"></i> Caută</a>
+                <a href="#"><i class="fas fa-user"></i> Cont</a>
+                <a href="#"><i class="fas fa-shopping-cart"></i> Coș (0)</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Jocuri Educative pentru Copii</h2>
+                <p>Descoperă cea mai variată selecție de jocuri și jucării pentru copii de toate vârstele. Calitate, siguranță și distracție garantată!</p>
+                <a href="#produse" class="btn">Explorează Produsele</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categorii -->
+    <section class="categories" id="categorii">
+        <div class="container">
+            <h2 class="section-title">Categorii Populare</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1587654780291-39c9404d746b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <h3>Lego & Construcții</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <h3>Mașinuțe & Vehicule</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <h3>Păpuși & Accesorii</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <h3>Jocuri Educative</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produse -->
+    <section class="products" id="produse">
+        <div class="container">
+            <h2 class="section-title">Produse Populare</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1587654780291-39c9404d746b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Set Lego Creator - Casă Modernă</h3>
+                        <div class="product-price">189,99 Lei</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <button class="add-to-cart">Adaugă în Coș</button>
+                    </div>
+                </div>
+               
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Mașinuță Radio Control - Lamborghini</h3>
+                        <div class="product-price">249,99 Lei</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <button class="add-to-cart">Adaugă în Coș</button>
+                    </div>
+                </div>
+               
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Păpușă Barbie - Doctor</h3>
+                        <div class="product-price">129,99 Lei</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <button class="add-to-cart">Adaugă în Coș</button>
+                    </div>
+                </div>
+               
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Set Puzzle Educativ - Animale</h3>
+                        <div class="product-price">79,99 Lei</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <button class="add-to-cart">Adaugă în Coș</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Despre Noi -->
+    <section class="about" id="despre">
+        <div class="container">
+            <h2 class="section-title">Despre DUMI GAMES</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>DUMI GAMES este magazinul tău de încredere pentru jocuri și jucării educative pentru copii. Înființată în 2010, compania noastră s-a dedicat oferirii de produse de calitate care să stimuleze imaginația și creativitatea copiilor.</p>
+                    <p>Colaborăm direct cu producători de renume mondial pentru a vă oferi cele mai sigure și mai durabile jucării. Toate produsele noastre respectă normele europene de siguranță și sunt testate înainte de a ajunge la voi.</p>
+                    <p>Misiunea noastră este să aducem zâmbetul pe fețele copiilor și liniștea în sufletul părinților, oferind jucării care să educe și să distreze în același timp.</p>
+                    <a href="#" class="btn">Află Mai Multe</a>
+                </div>
+                <div class="about-image"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Abonează-te la Newsletter</h2>
+            <p>Primește cele mai noi oferte și noutăți despre produsele DUMI GAMES</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Introdu adresa ta de email" required>
+                <button type="submit">Abonează-te</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>DUMI GAMES</h3>
+                    <p>Magazinul tău de încredere pentru jocuri și jucării educative pentru copii.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+               
+                <div class="footer-column">
+                    <h3>Linkuri Rapide</h3>
+                    <ul>
+                        <li><a href="#home">Acasă</a></li>
+                        <li><a href="#categorii">Categorii</a></li>
+                        <li><a href="#produse">Produse</a></li>
+                        <li><a href="#despre">Despre Noi</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+               
+                <div class="footer-column">
+                    <h3>Informații</h3>
+                    <ul>
+                        <li><a href="#">Termeni și Condiții</a></li>
+                        <li><a href="#">Politica de Confidențialitate</a></li>
+                        <li><a href="#">Politica de Retur</a></li>
+                        <li><a href="#">Livrare</a></li>
+                        <li><a href="#">Întrebări Frecvente</a></li>
+                    </ul>
+                </div>
+               
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Strada Jocurilor, Nr. 10, București</li>
+                        <li><i class="fas fa-phone"></i> +40 721 123 456</li>
+                        <li><i class="fas fa-envelope"></i> contact@dumigames.ro</li>
+                        <li><i class="fas fa-clock"></i> Luni - Vineri: 9:00 - 18:00</li>
+                    </ul>
+                </div>
+            </div>
+           
+            <div class="copyright">
+                <p>&copy; 2023 DUMI GAMES. Toate drepturile rezervate.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Script simplu pentru funcționalități de bază
+        document.addEventListener('DOMContentLoaded', function() {
+            // Adăugare produs în coș
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const productName = this.closest('.product-card').querySelector('h3').textContent;
+                    alert(`Produsul "${productName}" a fost adăugat în coș!`);
+                   
+                    // Actualizare număr coș (simulat)
+                    const cartCount = document.querySelector('.user-actions a:last-child');
+                    const currentCount = parseInt(cartCount.textContent.match(/\d+/)[0]);
+                    cartCount.innerHTML = '<i class="fas fa-shopping-cart"></i> Coș (' + (currentCount + 1) + ')';
+                });
+            });
+           
+            // Formular newsletter
+            const newsletterForm = document.querySelector('.newsletter-form');
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input').value;
+                alert(`Mulțumim pentru abonare! Vei primi noutăți la adresa: ${email}`);
+                this.reset();
+            });
+           
+            // Navigare lină la ancoraje
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if(targetId !== '#') {
+                        const targetElement = document.querySelector(targetId);
+                        if(targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
