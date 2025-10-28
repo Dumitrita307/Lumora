@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lumora</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Panou lateral (hamburger) -->
+  <aside class="drawer" id="drawer" aria-hidden="true" aria-labelledby="drawerTitle" role="dialog">
+    <div class="drawer__header">
+      <h2 id="drawerTitle">Categorii</h2>
+      <button class="iconbtn" aria-label="Închide meniu" id="drawerClose">✕</button>
+    </div>
+    <nav class="drawer__nav">
+      <a href="#" class="drawer__link">Fundaluri</a>
+      <a href="#" class="drawer__link">Poze</a>
+      <a href="#" class="drawer__link">Idei</a>
+      <a href="#" class="drawer__link">Decor</a>
+      <a href="#" class="drawer__link">Haine</a>
+      <a href="#" class="drawer__link">Tutoriale</a>
+    </nav>
+  </aside>
+  <div class="scrim" id="scrim" hidden></div>
+
+  <header class="site-header">
+    <div class="container header-grid">
+      <!-- stânga: favorite + profil -->
+      <div class="header-left">
+        <button class="tile" aria-label="Favorite">
+          <span class="tile__icon" aria-hidden="true">♥</span>
+        </button>
+        <button class="tile" aria-label="Profil">
+          <span class="tile__icon" aria-hidden="true">👤</span>
+        </button>
+      </div>
+
+      <!-- centru: taburi -->
+      <nav class="tabs" aria-label="Categorii principale">
+        <a class="tab tab--active" href="#decor">Decor</a>
+        <a class="tab" href="#poze">Poze</a>
+        <a class="tab" href="#idei">Idei</a>
+        <a class="tab" href="#fundaluri">Fundaluri</a>
+      </nav>
+
+      <!-- dreapta: search + hamburger -->
+      <div class="header-right">
+        <button class="iconbtn" aria-label="Căutare">
+          🔍
+        </button>
+        <button class="iconbtn" aria-label="Deschide meniu" id="drawerOpen">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- secțiunea 1 (cutii mari sus) -->
+    <section class="board" id="decor" aria-labelledby="sect1Title">
+      <h2 id="sect1Title" class="visually-hidden">Panou principal</h2>
+      <div class="grid grid--top">
+        <article class="card"></article>
+        <article class="card"></article>
+        <article class="card"></article>
+        <article class="card"></article>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- IDEI -->
+    <section class="board" id="idei" aria-labelledby="ideasTitle">
+      <h3 class="board__title" id="ideasTitle">IDEI</h3>
+      <div class="grid">
+        <!-- pune oricâte carduri dorești; am lăsat câteva „placeholder” -->
+        <article class="card"></article>
+        <article class="card"></article>
+        <article class="card"></article>
+        <article class="card"></article>
+        <article class="card"></article>
+        <article class="card"></article>
+        <article class="card"></article>
+        <article class="card"></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer__container">
+      <small>© <span id="year"></span> Lumora</small>
+    </div>
+  </footer>
+
+  <script>
+    // anul în footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Drawer logic
+    const drawer = document.getElementById('drawer');
+    const scrim = document.getElementById('scrim');
+    const openBtn = document.getElementById('drawerOpen');
+    const closeBtn = document.getElementById('drawerClose');
+
+    function openDrawer() {
+      drawer.setAttribute('aria-hidden', 'false');
+      scrim.hidden = false;
+      document.body.style.overflow = 'hidden';
+    }
+    function closeDrawer() {
+      drawer.setAttribute('aria-hidden', 'true');
+      scrim.hidden = true;
+      document.body.style.overflow = '';
+    }
+
+    openBtn.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    scrim.addEventListener('click', closeDrawer);
+    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
+  </script>
+</body>
+</html>
