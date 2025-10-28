@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="ro">
+
 <head>
   <meta charset="utf-8" />
+  <!-- Adaugă linia aceasta -->
+  <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Lumora</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
-  <!-- Panou lateral (hamburger) -->
+
   <aside class="drawer" id="drawer" aria-hidden="true" aria-labelledby="drawerTitle" role="dialog">
     <div class="drawer__header">
       <h2 id="drawerTitle">Categorii</h2>
@@ -27,17 +31,31 @@
 
   <header class="site-header">
     <div class="container header-grid">
-      <!-- stânga: favorite + profil -->
+
       <div class="header-left">
         <button class="tile" aria-label="Favorite">
-          <span class="tile__icon" aria-hidden="true">♥</span>
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+            transform="rotate(0 0 0)">
+            <path
+              d="M11.8227 4.77222C9.5756 2.52515 5.93237 2.52515 3.6853 4.77222C1.43823 7.01929 1.43823 10.6625 3.6853 12.9096L10.409 19.6334C11.2877 20.5121 12.7123 20.5121 13.591 19.6334L20.3147 12.9097C22.5618 10.6626 22.5618 7.01939 20.3147 4.77232C18.0676 2.52525 14.4244 2.52525 12.1773 4.77232L12 4.94959L11.8227 4.77222Z"
+              fill="#343C54" />
+          </svg>
+
         </button>
         <button class="tile" aria-label="Profil">
-          <span class="tile__icon" aria-hidden="true">👤</span>
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+            transform="rotate(0 0 0)">
+            <path
+              d="M12.0672 2C9.6678 2 7.72266 3.94514 7.72266 6.34459C7.72266 8.74404 9.6678 10.6892 12.0672 10.6892C14.4667 10.6892 16.4118 8.74404 16.4118 6.34459C16.4118 3.94514 14.4667 2 12.0672 2Z"
+              fill="#343C54" />
+            <path
+              d="M20.25 19.453C20.2421 19.8615 19.9087 20.1895 19.5001 20.1895H4.50013C4.09157 20.1895 3.75818 19.8624 3.75027 19.454L3.75023 19.452L3.75019 19.4493L3.7501 19.4423L3.75 19.4211C3.74999 19.404 3.75015 19.3807 3.75072 19.3516C3.75187 19.2937 3.75468 19.2127 3.76117 19.1119C3.77413 18.9107 3.80189 18.6292 3.86099 18.2937C3.97867 17.6258 4.22374 16.7262 4.73808 15.8194C5.79641 13.9537 7.92408 12.1895 12.0001 12.1895C16.0762 12.1895 18.2038 13.9537 19.2622 15.8194C19.7765 16.7262 20.0216 17.6258 20.1393 18.2937C20.1984 18.6292 20.2261 18.9107 20.2391 19.1119C20.2456 19.2127 20.2484 19.2937 20.2495 19.3516C20.2501 19.3807 20.2503 19.404 20.2503 19.4211L20.2502 19.4423L20.2501 19.4493L20.25 19.452L20.25 19.453Z"
+              fill="#343C54" />
+          </svg>
         </button>
       </div>
 
-      <!-- centru: taburi -->
+
       <nav class="tabs" aria-label="Categorii principale">
         <a class="tab tab--active" href="#decor">Decor</a>
         <a class="tab" href="#poze">Poze</a>
@@ -45,20 +63,29 @@
         <a class="tab" href="#fundaluri">Fundaluri</a>
       </nav>
 
-      <!-- dreapta: search + hamburger -->
+
       <div class="header-right">
         <button class="iconbtn" aria-label="Căutare">
-          🔍
+          <svg width="32" height="32" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"
+            transform="rotate(0 0 0)">
+            <path
+              d="M2 11.998C2 6.89029 6.14154 2.75 11.25 2.75C16.3585 2.75 20.5 6.89029 20.5 11.998C20.5 14.2826 19.6714 16.3737 18.2983 17.9873L21.7791 21.4685C22.072 21.7614 22.072 22.2363 21.7791 22.5292C21.4862 22.822 21.0113 22.822 20.7184 22.5291L17.2372 19.0476C15.6237 20.4187 13.5334 21.2459 11.25 21.2459C6.14154 21.2459 2 17.1056 2 11.998ZM11.25 4.25C6.96962 4.25 3.5 7.71905 3.5 11.998C3.5 16.2769 6.96962 19.7459 11.25 19.7459C15.5304 19.7459 19 16.2769 19 11.998C19 7.71905 15.5304 4.25 11.25 4.25Z"
+              fill="#343C54" />
+            <path opacity="0.4"
+              d="M11.25 5.74902C10.8358 5.74902 10.5 6.08481 10.5 6.49902C10.5 6.91324 10.8358 7.24902 11.25 7.24902C13.8742 7.24902 16.0013 9.37584 16.0013 11.999C16.0013 12.4132 16.3371 12.749 16.7513 12.749C17.1655 12.749 17.5013 12.4132 17.5013 11.999C17.5013 8.54707 14.7023 5.74902 11.25 5.74902Z"
+              fill="#343C54" />
+          </svg>
         </button>
-        <button class="iconbtn" aria-label="Deschide meniu" id="drawerOpen">
-          ☰
+        <button class="iconbtn" aria-label="Deschide meniu" id="drawerOpen" style="color:#000;">
+          <i class="fi fi-br-bars-staggered"></i>
         </button>
+
       </div>
     </div>
   </header>
 
   <main class="container">
-    <!-- secțiunea 1 (cutii mari sus) -->
+
     <section class="board" id="decor" aria-labelledby="sect1Title">
       <h2 id="sect1Title" class="visually-hidden">Panou principal</h2>
       <div class="grid grid--top">
@@ -71,11 +98,11 @@
 
     <hr class="divider" />
 
-    <!-- IDEI -->
+
     <section class="board" id="idei" aria-labelledby="ideasTitle">
       <h3 class="board__title" id="ideasTitle">IDEI</h3>
       <div class="grid">
-        <!-- pune oricâte carduri dorești; am lăsat câteva „placeholder” -->
+
         <article class="card"></article>
         <article class="card"></article>
         <article class="card"></article>
@@ -95,10 +122,10 @@
   </footer>
 
   <script>
-    // anul în footer
+
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Drawer logic
+
     const drawer = document.getElementById('drawer');
     const scrim = document.getElementById('scrim');
     const openBtn = document.getElementById('drawerOpen');
@@ -121,4 +148,5 @@
     window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
   </script>
 </body>
+
 </html>
