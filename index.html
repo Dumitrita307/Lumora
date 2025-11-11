@@ -3,11 +3,11 @@
 
 <head>
   <meta charset="utf-8" />
-  <!-- Adaugă linia aceasta -->
   <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Lumora</title>
   <link rel="stylesheet" href="style.css" />
+  
 </head>
 
 <body>
@@ -40,8 +40,8 @@
               d="M11.8227 4.77222C9.5756 2.52515 5.93237 2.52515 3.6853 4.77222C1.43823 7.01929 1.43823 10.6625 3.6853 12.9096L10.409 19.6334C11.2877 20.5121 12.7123 20.5121 13.591 19.6334L20.3147 12.9097C22.5618 10.6626 22.5618 7.01939 20.3147 4.77232C18.0676 2.52525 14.4244 2.52525 12.1773 4.77232L12 4.94959L11.8227 4.77222Z"
               fill="#343C54" />
           </svg>
-
         </button>
+
         <button class="tile" aria-label="Profil">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
             transform="rotate(0 0 0)">
@@ -56,26 +56,34 @@
       </div>
 
 
+
       <nav class="tabs" aria-label="Categorii principale">
         <a class="tab tab--active" href="#decor">Decor</a>
         <a class="tab" href="#poze">Poze</a>
-        <a class="tab" href="#idei">Idei</a>
+        <a class="tab" href="#idei">Idei Unghii</a>
         <a class="tab" href="#fundaluri">Fundaluri</a>
       </nav>
 
 
       <div class="header-right">
-        <button class="iconbtn" aria-label="Căutare">
-          <svg width="32" height="32" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"
-            transform="rotate(0 0 0)">
-            <path
-              d="M2 11.998C2 6.89029 6.14154 2.75 11.25 2.75C16.3585 2.75 20.5 6.89029 20.5 11.998C20.5 14.2826 19.6714 16.3737 18.2983 17.9873L21.7791 21.4685C22.072 21.7614 22.072 22.2363 21.7791 22.5292C21.4862 22.822 21.0113 22.822 20.7184 22.5291L17.2372 19.0476C15.6237 20.4187 13.5334 21.2459 11.25 21.2459C6.14154 21.2459 2 17.1056 2 11.998ZM11.25 4.25C6.96962 4.25 3.5 7.71905 3.5 11.998C3.5 16.2769 6.96962 19.7459 11.25 19.7459C15.5304 19.7459 19 16.2769 19 11.998C19 7.71905 15.5304 4.25 11.25 4.25Z"
-              fill="#343C54" />
-            <path opacity="0.4"
-              d="M11.25 5.74902C10.8358 5.74902 10.5 6.08481 10.5 6.49902C10.5 6.91324 10.8358 7.24902 11.25 7.24902C13.8742 7.24902 16.0013 9.37584 16.0013 11.999C16.0013 12.4132 16.3371 12.749 16.7513 12.749C17.1655 12.749 17.5013 12.4132 17.5013 11.999C17.5013 8.54707 14.7023 5.74902 11.25 5.74902Z"
-              fill="#343C54" />
-          </svg>
-        </button>
+          <div class="search-container">
+          <input type="checkbox" id="toggle-search" class="toggle-search">
+          <label for="toggle-search" class="iconbtn" aria-label="Deschide căutare">
+            <svg width="32" height="32" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M2 11.998C2 6.89029 6.14154 2.75 11.25 2.75C16.3585 2.75 20.5 6.89029 20.5 11.998C20.5 14.2826 19.6714 16.3737 18.2983 17.9873L21.7791 21.4685C22.072 21.7614 22.072 22.2363 21.7791 22.5292C21.4862 22.822 21.0113 22.822 20.7184 22.5291L17.2372 19.0476C15.6237 20.4187 13.5334 21.2459 11.25 21.2459C6.14154 21.2459 2 17.1056 2 11.998ZM11.25 4.25C6.96962 4.25 3.5 7.71905 3.5 11.998C3.5 16.2769 6.96962 19.7459 11.25 19.7459C15.5304 19.7459 19 16.2769 19 11.998C19 7.71905 15.5304 4.25 11.25 4.25Z"
+                fill="#343C54" />
+              <path opacity="0.4"
+                d="M11.25 5.74902C10.8358 5.74902 10.5 6.08481 10.5 6.49902C10.5 6.91324 10.8358 7.24902 11.25 7.24902C13.8742 7.24902 16.0013 9.37584 16.0013 11.999C16.0013 12.4132 16.3371 12.749 16.7513 12.749C17.1655 12.749 17.5013 12.4132 17.5013 11.999C17.5013 8.54707 14.7023 5.74902 11.25 5.74902Z"
+                fill="#343C54" />
+            </svg>
+          </label>
+
+          
+          <input type="text" class="search-bar" placeholder="Caută..." />
+        </div>
+
+
         <button class="iconbtn" aria-label="Deschide meniu" id="drawerOpen" style="color:#000;">
           <i class="fi fi-br-bars-staggered"></i>
         </button>
@@ -87,7 +95,7 @@
   <main class="container">
 
     <section class="board" id="decor" aria-labelledby="sect1Title">
-      <h2 id="sect1Title" class="visually-hidden">Panou principal</h2>
+      <h2 id="sect1Title" class="visually-hidden">Decor</h2>
       <div class="grid grid--top">
         <article class="card"></article>
         <article class="card"></article>
@@ -100,7 +108,52 @@
 
 
     <section class="board" id="idei" aria-labelledby="ideasTitle">
-      <h3 class="board__title" id="ideasTitle">IDEI</h3>
+      <h3 class="board__title" id="ideasTitle">Idei Unghii</h3>
+      <div class="grid">
+
+        <article class="card">
+          <img 
+          src="https://i.pinimg.com/736x/d5/41/5c/d5415c99dc0c28c25cd817d4f0e2feb4.jpg" 
+          alt="Idee unghii 1"
+        ></article>
+        
+        <article class="card">
+           <img 
+           src="https://i.pinimg.com/736x/9c/5b/e6/9c5be682cd086b0bf8d8972e077f0c5f.jpg" 
+          alt="Idee unghii 2"
+        ></article>
+
+        <article class="card"> 
+           <img 
+           src="https://i.pinimg.com/736x/4c/b6/d0/4cb6d018a2d47923d7b9e44dc6dd903d.jpg"
+          alt="Idee unghii 3"
+        ></article>
+
+        <article class="card">
+          <img 
+           src="https://i.pinimg.com/736x/95/30/af/9530aff9443396eeac3e99d6aa5d24ba.jpg"
+          alt="Idee unghii 4"
+        ></article>
+
+        <article class="card">
+          <img 
+           src="https://i.pinimg.com/1200x/3f/c9/b4/3fc9b408c07c528efe408bee91188288.jpg"
+          alt="Idee unghii 4"
+        ></article>
+
+        <article class="card">
+          <img 
+           src="https://i.pinimg.com/736x/3e/6b/8a/3e6b8a2946819c74078466bc0e503643.jpg"
+          alt="Idee unghii 5"
+        ></article>
+
+      </div>
+    </section>
+
+  <hr classa="driver" />
+
+  <section class="board" id="idei" aria-labelledby="ideasTitle">
+      <h3 class="board__title" id="ideasTitle">Poze</h3>
       <div class="grid">
 
         <article class="card"></article>
@@ -113,7 +166,11 @@
         <article class="card"></article>
       </div>
     </section>
+
+      <hr classa="driver" />
+  
   </main>
+
 
   <footer class="site-footer">
     <div class="container footer__container">
