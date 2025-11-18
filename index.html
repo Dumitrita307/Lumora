@@ -8,7 +8,7 @@
 </head>
 <body>
 
-  <!-- Panou lateral (hamburger) -->
+ 
   <aside class="drawer" id="drawer" aria-hidden="true" aria-labelledby="drawerTitle" role="dialog">
     <div class="drawer__header">
       <h2 id="drawerTitle">Categorii</h2>
@@ -27,28 +27,28 @@
 
   <header class="site-header">
     <div class="container header-grid">
-      <!-- stânga: favorite + profil -->
+     
       <div class="header-left">
         <button class="tile" aria-label="Favorite">
-          <span class="tile__icon" aria-hidden="true">♥</span>
+          <span class="tile__icon" aria-hidden="true"><img width="30" height="30" src="https://img.icons8.com/ios-filled/50/like--v1.png" alt="like--v1"/></span>
         </button>
         <button class="tile" aria-label="Profil">
-          <span class="tile__icon" aria-hidden="true">👤</span>
+          <span class="tile__icon" aria-hidden="true"><img width="40" height="40" src="https://img.icons8.com/pastel-glyph/64/person-male--v3.png" alt="person-male--v3"/></span>
         </button>
       </div>
 
-      <!-- centru: taburi -->
+    
       <nav class="tabs" aria-label="Categorii principale">
         <a class="tab tab--active" href="#decor">Decor</a>
-        <a class="tab" href="#poze">Poze</a>
-        <a class="tab" href="#idei">Idei</a>
-        <a class="tab" href="#fundaluri">Fundaluri</a>
+        <a class="tab tab--active" href="#poze">Poze</a>
+        <a class="tab tab--active" href="#idei">Idei</a>
+        <a class="tab tab--active" href="#fundaluri">Fundaluri</a>
       </nav>
 
-      <!-- dreapta: search + hamburger -->
+      
       <div class="header-right">
         <button class="iconbtn" aria-label="Căutare">
-          🔍
+          <img width="26" height="26" src="https://img.icons8.com/metro/26/search.png" alt="search"/>
         </button>
         <button class="iconbtn" aria-label="Deschide meniu" id="drawerOpen">
           ☰
@@ -58,7 +58,7 @@
   </header>
 
   <main class="container">
-    <!-- secțiunea 1 (cutii mari sus) -->
+   
     <section class="board" id="decor" aria-labelledby="sect1Title">
       <h2 id="sect1Title" class="visually-hidden">Panou principal</h2>
       <div class="grid grid--top">
@@ -71,11 +71,11 @@
 
     <hr class="divider" />
 
-    <!-- IDEI -->
+  
     <section class="board" id="idei" aria-labelledby="ideasTitle">
       <h3 class="board__title" id="ideasTitle">IDEI</h3>
       <div class="grid">
-        <!-- pune oricâte carduri dorești; am lăsat câteva „placeholder” -->
+
         <article class="card"></article>
         <article class="card"></article>
         <article class="card"></article>
@@ -95,10 +95,10 @@
   </footer>
 
   <script>
-    // anul în footer
+  
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Drawer logic
+   
     const drawer = document.getElementById('drawer');
     const scrim = document.getElementById('scrim');
     const openBtn = document.getElementById('drawerOpen');
