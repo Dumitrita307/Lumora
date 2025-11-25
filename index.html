@@ -1,124 +1,736 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Lumora</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <title>Lumora – Pinterest Transparent</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+    }
+
+    /* FUNDAL PAGINĂ */
+    body {
+      min-height: 100vh;
+      background:
+        linear-gradient(180deg, #f3f6f8 0%, #e7edf2 35%, #dfe7ee 100%),
+        #e6ecf2;
+      background-attachment: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+    }
+
+    /* CONTAINERUL PRINCIPAL – TRANSPARENT */
+    .app-frame {
+      width: 100%;
+      max-width: 1520px;
+      margin: 10px;
+      border-radius: 24px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.86);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .app {
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      height: 100%;
+      min-height: calc(100vh - 20px);
+    }
+
+    /* SIDEBAR STÂNGA – TRANSPARENT / LIGHT */
+
+    .sidebar {
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.92),
+        rgba(248, 249, 251, 0.85)
+      );
+      border-right: 1px solid rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 12px;
+      gap: 8px;
+    }
+
+    .sidebar-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #111;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: 4px;
+    }
+
+    .nav-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: none;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 20px;
+      transition: background 0.15s ease, transform 0.15s ease,
+        box-shadow 0.15s ease;
+      color: #444;
+    }
+
+    .nav-btn span {
+      font-size: 20px;
+    }
+
+    .nav-btn:hover {
+      background: rgba(0, 0, 0, 0.04);
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    }
+
+    .nav-btn.active {
+      background: #111;
+      color: #fff;
+      box-shadow: 0 7px 16px rgba(0, 0, 0, 0.35);
+    }
+
+    .sidebar-bottom {
+      margin-top: auto;
+      margin-bottom: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      align-items: center;
+      font-size: 11px;
+      color: #777;
+    }
+
+    /* PARTEA DREAPTĂ */
+
+    .main {
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.96),
+        rgba(255, 255, 255, 0.9)
+      );
+    }
+
+    /* TOP BAR – CA LA PINTEREST */
+
+    .topbar {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      gap: 16px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .topbar-logo-text {
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: 0.18em;
+    }
+
+    .topbar-tagline {
+      font-size: 11px;
+      color: #888;
+    }
+
+    .topbar-logo-group {
+      min-width: 150px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .search-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      background: #efefef;
+      border-radius: 26px;
+      padding: 0 16px;
+      gap: 8px;
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.02);
+    }
+
+    .search-icon {
+      font-size: 18px;
+      color: #777;
+    }
+
+    #searchInput {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 10px 0;
+      font-size: 15px;
+      outline: none;
+      color: #111;
+    }
+
+    #searchInput::placeholder {
+      color: #999;
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 17px;
+      color: #444;
+      transition: background 0.15s ease, box-shadow 0.15s ease,
+        transform 0.15s ease;
+    }
+
+    .icon-btn:hover {
+      background: rgba(0, 0, 0, 0.06);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      transform: translateY(-1px);
+    }
+
+    .avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #444;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+    }
+
+    /* FEED – GRID PINTEREST */
+
+    .feed {
+      padding: 18px 18px 40px;
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .grid {
+      column-count: 6;
+      column-gap: 16px;
+    }
+
+    @media (max-width: 1600px) {
+      .grid {
+        column-count: 5;
+      }
+    }
+    @media (max-width: 1300px) {
+      .grid {
+        column-count: 4;
+      }
+    }
+    @media (max-width: 1000px) {
+      .app {
+        grid-template-columns: 60px 1fr;
+      }
+      .grid {
+        column-count: 3;
+      }
+    }
+    @media (max-width: 800px) {
+      .grid {
+        column-count: 2;
+      }
+    }
+    @media (max-width: 600px) {
+      .app-frame {
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+      .app {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        display: none;
+      }
+      .topbar {
+        padding: 0 12px;
+      }
+      .feed {
+        padding: 10px 10px 32px;
+      }
+      .grid {
+        column-count: 2;
+      }
+    }
+    @media (max-width: 420px) {
+      .grid {
+        column-count: 1;
+      }
+    }
+
+    .pin-card {
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 16px;
+      border-radius: 18px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.92);
+      position: relative;
+      cursor: zoom-in;
+      break-inside: avoid;
+      transition: transform 0.15s ease, box-shadow 0.15s ease,
+        background 0.15s ease;
+      box-shadow: 0 6px 14px rgba(15, 23, 42, 0.12);
+    }
+
+    .pin-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.23);
+      background: #ffffff;
+    }
+
+    .pin-img-wrapper {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .pin-img-wrapper img {
+      width: 100%;
+      display: block;
+    }
+
+    .pin-overlay {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.1),
+        rgba(0, 0, 0, 0.55)
+      );
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 10px;
+    }
+
+    .pin-card:hover .pin-overlay {
+      opacity: 1;
+    }
+
+    .btn-save {
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: #e60023;
+      color: #fff;
+      border: none;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-save:hover {
+      background: #c0001d;
+    }
+
+    .overlay-right {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      align-items: flex-end;
+    }
+
+    .overlay-chip {
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 16px;
+      padding: 4px 8px;
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: #333;
+    }
+
+    .overlay-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #333;
+    }
+
+    .pin-meta {
+      padding: 8px 9px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      color: #111;
+    }
+
+    .pin-title {
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .pin-sub {
+      font-size: 11px;
+      color: #777;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pin-author {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .author-avatar {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 600;
+      color: #111;
+    }
+
+    .pin-stats {
+      font-size: 11px;
+      color: #888;
+    }
+
+    .empty-state {
+      text-align: center;
+      color: #888;
+      margin-top: 40px;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
+  <div class="app-frame">
+    <div class="app">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="sidebar-logo">L</div>
 
- 
-  <aside class="drawer" id="drawer" aria-hidden="true" aria-labelledby="drawerTitle" role="dialog">
-    <div class="drawer__header">
-      <h2 id="drawerTitle">Categorii</h2>
-      <button class="iconbtn" aria-label="Închide meniu" id="drawerClose">✕</button>
+        <div class="sidebar-nav">
+          <button class="nav-btn active" data-filter="all" title="Acasă">
+            <span>⌂</span>
+          </button>
+          <button class="nav-btn" data-filter="ai" title="AI & Tech">
+            <span>⚙</span>
+          </button>
+          <button class="nav-btn" data-filter="design" title="Design & UI">
+            <span>🎨</span>
+          </button>
+          <button class="nav-btn" data-filter="cars" title="Cars">
+            <span>🚗</span>
+          </button>
+          <button class="nav-btn" data-filter="nature" title="Nature">
+            <span>🌲</span>
+          </button>
+        </div>
+
+        <div class="sidebar-bottom">
+          <div>© Lumora</div>
+          <div style="font-size:10px;">Inspirație vizuală</div>
+        </div>
+      </aside>
+
+      <!-- PARTEA DREAPTĂ -->
+      <div class="main">
+        <!-- TOPBAR -->
+        <header class="topbar">
+          <div class="topbar-logo-group">
+            <div class="topbar-logo-text">LUMORA</div>
+            <div class="topbar-tagline">
+              Inspirație vizuală, clară ca lumina.
+            </div>
+          </div>
+
+          <div class="search-wrapper">
+            <span class="search-icon">🔍</span>
+            <input
+              id="searchInput"
+              type="text"
+              placeholder="Caută idei pentru design, AI, mașini..."
+            />
+          </div>
+
+          <div class="topbar-right">
+            <button class="icon-btn" title="Mesaje">💬</button>
+            <button class="icon-btn" title="Notificări">🔔</button>
+            <div class="avatar" title="Profil">L</div>
+          </div>
+        </header>
+
+        <!-- FEED -->
+        <main class="feed">
+          <div id="grid" class="grid"></div>
+          <div id="emptyState" class="empty-state" style="display:none;">
+            Niciun pin găsit pentru filtrul / căutarea curentă.
+          </div>
+        </main>
+      </div>
     </div>
-    <nav class="drawer__nav">
-      <a href="#" class="drawer__link">Fundaluri</a>
-      <a href="#" class="drawer__link">Poze</a>
-      <a href="#" class="drawer__link">Idei</a>
-      <a href="#" class="drawer__link">Decor</a>
-      <a href="#" class="drawer__link">Haine</a>
-      <a href="#" class="drawer__link">Tutoriale</a>
-    </nav>
-  </aside>
-  <div class="scrim" id="scrim" hidden></div>
-
-  <header class="site-header">
-    <div class="container header-grid">
-     
-      <div class="header-left">
-        <button class="tile" aria-label="Favorite">
-          <span class="tile__icon" aria-hidden="true"><img width="30" height="30" src="https://img.icons8.com/ios-filled/50/like--v1.png" alt="like--v1"/></span>
-        </button>
-        <button class="tile" aria-label="Profil">
-          <span class="tile__icon" aria-hidden="true"><img width="40" height="40" src="https://img.icons8.com/pastel-glyph/64/person-male--v3.png" alt="person-male--v3"/></span>
-        </button>
-      </div>
-
-    
-      <nav class="tabs" aria-label="Categorii principale">
-        <a class="tab tab--active" href="#decor">Decor</a>
-        <a class="tab tab--active" href="#poze">Poze</a>
-        <a class="tab tab--active" href="#idei">Idei</a>
-        <a class="tab tab--active" href="#fundaluri">Fundaluri</a>
-      </nav>
-
-      
-      <div class="header-right">
-        <button class="iconbtn" aria-label="Căutare">
-          <img width="26" height="26" src="https://img.icons8.com/metro/26/search.png" alt="search"/>
-        </button>
-        <button class="iconbtn" aria-label="Deschide meniu" id="drawerOpen">
-          ☰
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <main class="container">
-   
-    <section class="board" id="decor" aria-labelledby="sect1Title">
-      <h2 id="sect1Title" class="visually-hidden">Panou principal</h2>
-      <div class="grid grid--top">
-        <article class="card"></article>
-        <article class="card"></article>
-        <article class="card"></article>
-        <article class="card"></article>
-      </div>
-    </section>
-
-    <hr class="divider" />
-
-  
-    <section class="board" id="idei" aria-labelledby="ideasTitle">
-      <h3 class="board__title" id="ideasTitle">IDEI</h3>
-      <div class="grid">
-
-        <article class="card"></article>
-        <article class="card"></article>
-        <article class="card"></article>
-        <article class="card"></article>
-        <article class="card"></article>
-        <article class="card"></article>
-        <article class="card"></article>
-        <article class="card"></article>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer__container">
-      <small>© <span id="year"></span> Lumora</small>
-    </div>
-  </footer>
+  </div>
 
   <script>
-  
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // DATE PINURI
+    const pins = [
+      {
+        id: 1,
+        title: "Life is too short to drink bad wines – dark landing page",
+        category: "design",
+        author: "Lumora Studio",
+        stats: "2,3k salvați · 17h",
+        img: "https://images.pexels.com/photos/2903167/pexels-photo-2903167.jpeg?auto=compress&cs=tinysrgb&w=800"
+      },
+      {
+        id: 2,
+        title: "Glitch skull – cyberpunk intro screen",
+        category: "design",
+        author: "DarkPixels",
+        stats: "980 salvați · 1z",
+        img: "https://images.pexels.com/photos/1319796/pexels-photo-1319796.jpeg?auto=compress&cs=tinysrgb&w=800"
+      },
+      {
+        id: 3,
+        title: "AI training for product teams – minimal block",
+        category: "ai",
+        author: "AI Hub",
+        stats: "1,1k salvați · 3z",
+        img: "https://images.pexels.com/photos/9651195/pexels-photo-9651195.jpeg?auto=compress&cs=tinysrgb&w=800"
+      },
+      {
+        id: 4,
+        title: "Topographic Europe map – blue 3D view",
+        category: "design",
+        author: "GeoStudio",
+        stats: "750 salvați · 6z",
+        img: "https://images.pexels.com/photos/4085034/pexels-photo-4085034.jpeg?auto=compress&cs=tinysrgb&w=800"
+      },
+      {
+        id: 5,
+        title: "Elon Musk – dark card in Figma",
+        category: "design",
+        author: "UI Vision",
+        stats: "3,4k salvați · 1w",
+        img: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=800"
+      },
+      {
+        id: 6,
+        title: "Minimal skyscraper render at sunset",
+        category: "design",
+        author: "ArchLab",
+        stats: "620 salvați · 2w",
+        img: "https://images.pexels.com/photos/439391/pexels-photo-439391.jpeg?auto=compress&cs=tinysrgb&w=800"
+      },
+      {
+        id: 7,
+        title: "Plant store – dark ecommerce concept",
+        category: "design",
+        author: "Lumora Studio",
+        stats: "1,8k salvați · 2d",
+        img: "https://images.pexels.com/photos/4505165/pexels-photo-4505165.jpeg?auto=compress&cs=tinysrgb&w=800"
+      },
+      {
+        id: 8,
+        title: "Audi RS – forest photoshoot",
+        category: "cars",
+        author: "RS Visuals",
+        stats: "5,2k salvați · 5h",
+        img: "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=800"
+      },
+      {
+        id: 9,
+        title: "Tech & game reviews – dashboard UI",
+        category: "design",
+        author: "UI Deck",
+        stats: "1,3k salvați · 5d",
+        img: "https://images.pexels.com/photos/97077/pexels-photo-97077.jpeg?auto=compress&cs=tinysrgb&w=800"
+      },
+      {
+        id: 10,
+        title: "Pleasant light for block in Figma – orange UI",
+        category: "design",
+        author: "DesignGym",
+        stats: "2,0k salvați · 3d",
+        img: "https://images.pexels.com/photos/2706379/pexels-photo-2706379.jpeg?auto=compress&cs=tinysrgb&w=800"
+      },
+      {
+        id: 11,
+        title: "Vim editor shortcuts – infographic",
+        category: "ai",
+        author: "DevBoard",
+        stats: "420 salvați · 4w",
+        img: "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=800"
+      },
+      {
+        id: 12,
+        title: "RS5 wallpaper – glossy black car",
+        category: "cars",
+        author: "AutoVisual",
+        stats: "3,9k salvați · 9h",
+        img: "https://images.pexels.com/photos/210018/pexels-photo-210018.jpeg?auto=compress&cs=tinysrgb&w=800"
+      },
+      {
+        id: 13,
+        title: "Cool morning – UI widgets for weather",
+        category: "design",
+        author: "UI Lab",
+        stats: "870 salvați · 2w",
+        img: "https://images.pexels.com/photos/530280/pexels-photo-530280.jpeg?auto=compress&cs=tinysrgb&w=800"
+      },
+      {
+        id: 14,
+        title: "Forest cabin – Just do it. Do it scared.",
+        category: "nature",
+        author: "Motivational",
+        stats: "1,7k salvați · 1w",
+        img: "https://images.pexels.com/photos/227417/pexels-photo-227417.jpeg?auto=compress&cs=tinysrgb&w=800"
+      },
+      {
+        id: 15,
+        title: "Glass greenhouse – Minecraft style build",
+        category: "nature",
+        author: "BlockWorld",
+        stats: "540 salvați · 3w",
+        img: "https://images.pexels.com/photos/37347/greenhouse-self-sufficiently-solar-cell-eco.jpg?auto=compress&cs=tinysrgb&w=800"
+      }
+    ];
 
-   
-    const drawer = document.getElementById('drawer');
-    const scrim = document.getElementById('scrim');
-    const openBtn = document.getElementById('drawerOpen');
-    const closeBtn = document.getElementById('drawerClose');
+    const grid = document.getElementById("grid");
+    const emptyState = document.getElementById("emptyState");
+    const searchInput = document.getElementById("searchInput");
+    const navButtons = document.querySelectorAll(".nav-btn");
 
-    function openDrawer() {
-      drawer.setAttribute('aria-hidden', 'false');
-      scrim.hidden = false;
-      document.body.style.overflow = 'hidden';
+    let activeFilter = "all";
+    let searchTerm = "";
+
+    function renderPins() {
+      grid.innerHTML = "";
+
+      const filtered = pins.filter((pin) => {
+        const matchesFilter =
+          activeFilter === "all" || pin.category === activeFilter;
+        const matchesSearch =
+          searchTerm.trim() === "" ||
+          pin.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          pin.author.toLowerCase().includes(searchTerm.toLowerCase());
+        return matchesFilter && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        emptyState.style.display = "block";
+        return;
+      } else {
+        emptyState.style.display = "none";
+      }
+
+      filtered.forEach((pin) => {
+        const card = document.createElement("article");
+        card.className = "pin-card";
+        card.innerHTML = `
+          <div class="pin-img-wrapper">
+            <img src="${pin.img}" alt="${pin.title}">
+            <div class="pin-overlay">
+              <button class="btn-save">Salvează</button>
+              <div class="overlay-right">
+                <div class="overlay-chip">
+                  <span class="overlay-dot"></span>
+                  <span>Lumora board</span>
+                </div>
+                <div class="overlay-chip">•••</div>
+              </div>
+            </div>
+          </div>
+          <div class="pin-meta">
+            <div class="pin-title">${pin.title}</div>
+            <div class="pin-sub">
+              <div class="pin-author">
+                <div class="author-avatar">${pin.author
+                  .split(" ")
+                  .map((w) => w[0])
+                  .join("")
+                  .slice(0, 2)
+                  .toUpperCase()}</div>
+                <span>${pin.author}</span>
+              </div>
+              <div class="pin-stats">${pin.stats}</div>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
     }
-    function closeDrawer() {
-      drawer.setAttribute('aria-hidden', 'true');
-      scrim.hidden = true;
-      document.body.style.overflow = '';
-    }
 
-    openBtn.addEventListener('click', openDrawer);
-    closeBtn.addEventListener('click', closeDrawer);
-    scrim.addEventListener('click', closeDrawer);
-    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
+    // BUTOANE SIDEBAR – FILTRU
+    navButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        navButtons.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        activeFilter = btn.getAttribute("data-filter");
+        renderPins();
+      });
+    });
+
+    // SEARCH LIVE
+    searchInput.addEventListener("input", (e) => {
+      searchTerm = e.target.value;
+      renderPins();
+    });
+
+    // RENDER INITIAL
+    renderPins();
   </script>
 </body>
 </html>
